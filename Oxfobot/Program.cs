@@ -22,13 +22,13 @@ namespace Oxfobot
             _client.Log += _client_Log;
             await _client.LoginAsync(Discord.TokenType.Bot, File.ReadAllText("key.txt"));
             await _client.StartAsync();
-
             await Task.Delay(-1);
         }
 
         private Task _client_Log(Discord.LogMessage arg)
         {
-            throw new NotImplementedException();
+            Console.WriteLine($"{arg.Source} | {arg.Message}");
+            return Task.CompletedTask;
         }
     }
 }
